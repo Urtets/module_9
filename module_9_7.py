@@ -1,10 +1,11 @@
 def is_prime(func):
-    def wrapper(*args, **kwargs):
-        result = func(*args, **kwargs)
-        if type(result) == int:
-            print("Простое")
-        else:
+    def wrapper(*args):
+        answer = [True if type(x) != int or x != 1 else False for x in args]
+        result = func(*args)
+        if False in answer:
             print("Составное")
+        else:
+            print("Простое")
         return result
 
     return wrapper
